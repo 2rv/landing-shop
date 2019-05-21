@@ -21,7 +21,6 @@ class Catalog extends PureComponent {
 
   render() {
 
-
     return (
       <Container>
         {

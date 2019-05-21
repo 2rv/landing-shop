@@ -10,7 +10,6 @@ export default function fillForm(name = null, value = null, old = null,) {
   } else {
     return (dispatch => {
       const isError = validation(value, old[name].validation);
-      console.log(isError, "Iseror")
 
       if(old[name].validation === "FILE") {
         getBase(value, (new_value)=> {

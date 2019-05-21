@@ -1,6 +1,6 @@
 module.exports = {
   admin: {
-    login: "admin",
-    password: "password",
+    LOGIN: "admin",
+    PASSWORD: "password",
   }
 };

@@ -17,10 +17,7 @@ class Categories extends Component {
   };
 
   componentWillMount() {
-    this.props.getGds(this.props.match.params.filter, ()=> {
-      console.log(10000999999)
-      this.props.showEmptyPage();
-    });
+    this.props.getGds(this.props.match.params.filter, ()=> this.props.showEmptyPage());
     this.props.getCategories(this.props.match.params.filter, "LOAD");
   };
 

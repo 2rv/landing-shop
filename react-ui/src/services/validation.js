@@ -10,6 +10,9 @@ export default (value, type, mod)=> {
         case "MESSAGE":
           return false;
 
+        case "FILE":
+          return false;
+
         default:
           return true;
       }

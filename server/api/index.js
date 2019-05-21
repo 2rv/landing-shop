@@ -36,7 +36,7 @@ module.exports = (PORT, isDev)=> {
 
   app.listen(PORT, function () {
     console.error(`Node ${isDev ? 'dev server' : 'cluster worker '+process.pid}: listening on port ${PORT}`);
-    console.error(`Login: ${settings.admin.login}; Password: ${settings.admin.password};`);
+    console.error(`Login: ${settings.admin.LOGIN}; Password: ${settings.admin.PASSWORD};`);
   });
 
 

@@ -4,7 +4,10 @@ module.exports = (app)=> {
     const db = req.app.locals.slides;
     db.list(function(err, objects){
       if (err) res.status(500).send(err);
-      res.send({data: objects});
+
+      const sorted_objects = objects.sort((e1,e2) => (e1.id-e2.id));
+
+      res.send({data: sorted_objects});
     })
   });
 
@@ -12,7 +15,10 @@ module.exports = (app)=> {
     const db = req.app.locals.categories;
     db.list(function(err, objects){
       if (err) res.status(500).send(err);
-      res.send({data: objects});
+
+      const sorted_objects = objects.sort((e1,e2) => (e1.id-e2.id));
+
+      res.send({data: sorted_objects});
     })
   });
 
@@ -30,8 +36,9 @@ module.exports = (app)=> {
         result = objects.filter(({tag}) => tag === filter);
       }
 
+      const sorted_result = result.sort((e1,e2) => (e1.id-e2.id));
 
-      res.send({data: result});
+      res.send({data: sorted_result});
     })
   });
 
@@ -40,7 +47,10 @@ module.exports = (app)=> {
     const db = req.app.locals.services;
     db.list(function(err, objects){
       if (err) res.status(500).send(err);
-      res.send({data: objects});
+
+      const sorted_objects = objects.sort((e1,e2) => (e1.id-e2.id));
+
+      res.send({data: sorted_objects});
     })
   });
 

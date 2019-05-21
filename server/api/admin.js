@@ -5,6 +5,7 @@ const {LOGIN, PASSWORD} = settings.admin;
 module.exports = (app)=> {
   app.post("/admin/auth", function(req, res){
     const auth = req.body;
+    console.log(auth)
     if(auth.login === LOGIN && auth.password === PASSWORD) {
       res.status(200);
       res.send(req.body);
@@ -28,7 +29,7 @@ module.exports = (app)=> {
     let {data, key, auth} = req.body;
     if(auth.login === LOGIN && auth.password === PASSWORD) {
       const db = req.app.locals[key];
-      const id = Math.random() * 100000000000000000;
+      const id = (new Date()).getTime();
       data = {id: Number(id), ...data};
 
       db.add(data, function(err) {
