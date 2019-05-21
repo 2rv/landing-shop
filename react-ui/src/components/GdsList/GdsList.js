@@ -1,5 +1,5 @@
 import React, { PureComponent} from 'react';
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {getGds, cart as Cart} from "../../actions";
@@ -33,35 +33,46 @@ class GdsList extends PureComponent {
   render() {
 
     const {isLoading, data} = this.props.gds;
-    return (
-      <Container>
-        {
-          isLoading === false &&
-          <Content>
-            {
-              data.map((obj, index)=> {
-                let isAdded = false;
-                this.props.cart.added.forEach((id)=> {
-                  if(id === obj.id) {
-                    isAdded = true;
-                    return true;
-                  }
-                });
 
-                return (
-                  <React.Fragment key={index}>
-                    <Gds
-                      isAdded={isAdded}
-                      gds={obj}
-                      toggleGds={this.toggleGds}
-                      addGds={this.addGds}/>
-                  </React.Fragment>
-                )
-              })
-            }
-          </Content>
+    return (
+      <>
+        {
+          isLoading === false ?
+          <Container>
+            <Content>
+              {
+                data.map((obj, index)=> {
+                  let isAdded = false;
+                  this.props.cart.added.forEach((id)=> {
+                    if(id === obj.id) {
+                      isAdded = true;
+                      return true;
+                    }
+                  });
+
+                  return (
+                    <React.Fragment key={index}>
+                      <Gds
+                        isAdded={isAdded}
+                        gds={obj}
+                        toggleGds={this.toggleGds}
+                        addGds={this.addGds}/>
+                    </React.Fragment>
+                  )
+                })
+              }
+            </Content>
+          </Container>
+            :
+          <Container>
+            <Loading className="preloader">
+              <svg viewBox="0 0 100 100"  xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45"/>
+              </svg>
+            </Loading>
+          </Container>
         }
-      </Container>
+      </>
     );
   }
 
@@ -85,12 +96,28 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GdsList));
 
+const fade = keyframes`
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  `;
+
 const Container = styled.div`
     display: flex;
     padding: 0 20px;
     justify-content: center;
     margin-bottom: 100px;
     width: 100%;
+    
+  `;
+
+const Loading = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    animation: ${fade} 0.7s ease-in-out;
+
     
   `;
 
@@ -114,3 +141,4 @@ const Content = styled.div`
       grid-template-areas: ". .";
     }
   `;
+

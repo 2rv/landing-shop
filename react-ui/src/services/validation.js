@@ -36,7 +36,7 @@ export default (value, type, mod)=> {
       return value.match(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/) === null;
 
     case "EMAIL":
-      return value.match(/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:ru|aero|arpa|asia|biz|cat|com|ua|rus|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/) === null;
+      return value.match(/^[-A-Z-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:ru|aero|arpa|asia|biz|cat|com|ua|rus|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/) === null;
 
     case "TEXT":
       return value.match(/^(?!<$)(?!>$)(?!https:$|http:$)(.*)/) === null || value.length < 5 || value.length > 100

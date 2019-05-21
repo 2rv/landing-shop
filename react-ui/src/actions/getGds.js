@@ -11,6 +11,7 @@ export default function getCategories(filter, ifEmpty) {
       })
       .then((obj) => {
         if(obj.data.length === 0) {
+          console.log("data are empty")
           ifEmpty();
         }
       })

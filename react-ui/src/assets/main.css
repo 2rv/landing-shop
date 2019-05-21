@@ -30,3 +30,66 @@ body {
 .fade2s {
   animation: fade 2s ease-in-out;
 }
+
+.preloader svg {
+  height: 100%;
+}
+
+.preloader circle {
+  -webkit-animation: 1.4s ease-in-out infinite both circle-animation;
+  animation: 1.4s ease-in-out infinite both circle-animation;
+  display: block;
+  fill: transparent;
+  stroke: #8CDB90;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 280;
+  stroke-width: 10px;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+/* // Circle animation. */
+@-webkit-keyframes circle-animation {
+  0%,
+  25% {
+    stroke-dashoffset: 280;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  50%,
+  75% {
+    stroke-dashoffset: 75;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  100% {
+    stroke-dashoffset: 280;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes circle-animation {
+  0%,
+  25% {
+    stroke-dashoffset: 280;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  50%,
+  75% {
+    stroke-dashoffset: 75;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  100% {
+    stroke-dashoffset: 280;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
